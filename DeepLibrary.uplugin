@@ -1,0 +1,29 @@
+{
+	"FileVersion" : 3,
+	"Version" : 0,
+	"VersionName" : "1.0.0",
+	"FriendlyName" : "DeepLibrary Plugin",
+	"Description" : "DeepLearning Framework Helper",
+	"Category" : "DeepLearning",
+	"CreatedBy" : "keicoon15",
+	"CreatedByURL" : "",
+	"DocsURL" : "",
+	"MarketplaceURL" : "",
+	"SupportURL" : "",
+	"EnabledByDefault" : true,
+	"CanContainContent" : false,
+	"IsBetaVersion" : true,
+	"Installed" : false,
+  "Modules": [
+    {
+      "Name": "CNTKCore",
+      "Type": "Editor",
+      "LoadingPhase": "Default"
+    },
+		{
+      "Name": "TensorflowBridge",
+      "Type": "Editor",
+      "LoadingPhase": "Default"
+    }
+  ]
+}
