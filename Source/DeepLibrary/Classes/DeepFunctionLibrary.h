@@ -30,13 +30,13 @@ struct FCNTKVariable
 
 public:
 	UPROPERTY()
-		FString Name;
+	FString Name;
 
 	UPROPERTY()
-		int Kind;
+	int Kind;
 
 	UPROPERTY()
-		int ShapeSize;
+	int ShapeSize;
 };
 
 USTRUCT(BlueprintType)
@@ -46,7 +46,7 @@ struct FCNTKVariables
 
 public:
 	UPROPERTY()
-		TArray<FCNTKVariable> Variables;
+	TArray<FCNTKVariable> Variables;
 };
 
 USTRUCT()
@@ -56,7 +56,7 @@ struct FCNTKDim
 
 public:
 	UPROPERTY()
-		TArray<float> Values;
+	TArray<float> Values;
 };
 
 USTRUCT(BlueprintType)
@@ -66,7 +66,7 @@ struct FCNTKOutput
 
 public:
 	UPROPERTY()
-		TArray<FCNTKDim> Dims;
+	TArray<FCNTKDim> Dims;
 };
 
 USTRUCT(BlueprintType)
@@ -110,7 +110,7 @@ public:
 	{}
 
 	UPROPERTY()
-		TArray<float> FlatFloat;
+	TArray<float> FlatFloat;
 
 	TSharedPtr<FPrivateTensorflow> Handle;
 };
@@ -122,63 +122,63 @@ class DEEPLIBRARY_API UDeepFunctionLibrary : public UBlueprintFunctionLibrary
 
 public:
 	/* CNTK */
-	UFUNCTION(BlueprintCallable, Category = "DeepLibary|CNTK")
+	UFUNCTION(BlueprintCallable, Category = "DeepLibrary|CNTK")
 	static FCNTKFunction GetCNTKFunction(ECNTKDeviceType DeviceType, FString modelPath);
 
-	UFUNCTION(BlueprintCallable, Category = "DeepLibary|CNTK")
+	UFUNCTION(BlueprintCallable, Category = "DeepLibrary|CNTK")
 	static FCNTKVariables GetCNTKVariables(FCNTKFunction CNTKFunction, ECNTKVariableType VariableType);
 
-	UFUNCTION(BlueprintCallable, Category = "DeepLibary|CNTK")
+	UFUNCTION(BlueprintCallable, Category = "DeepLibrary|CNTK")
 	static FCNTKEvaluateMap GetEmptyEvaluateMap();
 
-	UFUNCTION(BlueprintCallable, Category = "DeepLibary|CNTK")
+	UFUNCTION(BlueprintCallable, Category = "DeepLibrary|CNTK")
 	static FCNTKEvaluateMap GetEvaluateMap(FString varName, ECNTKDeviceType DeviceType, FCNTKFunction Function);
 
-	UFUNCTION(BlueprintCallable, Category = "DeepLibary|CNTK")
+	UFUNCTION(BlueprintCallable, Category = "DeepLibrary|CNTK")
 	static void LoadEmptyEvaluateMap(FCNTKEvaluateMap Map, ECNTKDeviceType DeviceType, FCNTKFunction Function, FString varName, TArray<float> varValues);
 
-	UFUNCTION(BlueprintCallable, Category = "DeepLibary|CNTK")
+	UFUNCTION(BlueprintCallable, Category = "DeepLibrary|CNTK")
 	static void LoadEvaluteMap(FCNTKEvaluateMap Map, ECNTKDeviceType DeviceType, FCNTKFunction Function, TArray<float> varValues);
 
-	UFUNCTION(BlueprintCallable, Category = "DeepLibary|CNTK")
+	UFUNCTION(BlueprintCallable, Category = "DeepLibrary|CNTK")
 	static FCNTKOutput RunCNTK(const FCNTKFunction& Function, const FCNTKEvaluateMap& arguments);
 	/* Tensorflow */
-	UFUNCTION(BlueprintCallable, Category = "DeepLibary|Tensorflow")
+	UFUNCTION(BlueprintCallable, Category = "DeepLibrary|Tensorflow")
 	static FTensorflowSession CreateSession(FString GraphDef);
 
-	UFUNCTION(BlueprintCallable, Category = "DeepLibary|Tensorflow")
+	UFUNCTION(BlueprintCallable, Category = "DeepLibrary|Tensorflow")
 	static TArray<FString> GetTSVariables(FTensorflowSession Session);
 
-	UFUNCTION(BlueprintCallable, Category = "DeepLibary|Tensorflow")
+	UFUNCTION(BlueprintCallable, Category = "DeepLibrary|Tensorflow")
 	static FName GetStatus(FTensorflowSession Session);
 
-	UFUNCTION(BlueprintCallable, Category = "DeepLibary|Tensorflow")
+	UFUNCTION(BlueprintCallable, Category = "DeepLibrary|Tensorflow")
 	static void PushInput(FTensorflowSession Session, FString Name, ETensorflowDataType DataType, const TArray<int32>& Dimension);
 
-	UFUNCTION(BlueprintCallable, Category = "DeepLibary|Tensorflow")
+	UFUNCTION(BlueprintCallable, Category = "DeepLibrary|Tensorflow")
 	static void LoadInput(FTensorflowSession Session, FString Name);
 
-	UFUNCTION(BlueprintCallable, Category = "DeepLibary|Tensorflow")
+	UFUNCTION(BlueprintCallable, Category = "DeepLibrary|Tensorflow")
 	static void LoadOutput(FTensorflowSession Session, FString Name);
 
-	UFUNCTION(BlueprintCallable, Category = "DeepLibary|Tensorflow")
+	UFUNCTION(BlueprintCallable, Category = "DeepLibrary|Tensorflow")
 	static int32 NumElements(FTensorflowSession Session);
 
-	UFUNCTION(BlueprintCallable, Category = "DeepLibary|Tensorflow")
+	UFUNCTION(BlueprintCallable, Category = "DeepLibrary|Tensorflow")
 	static void RunTS(FTensorflowSession Session, const TArray<FString>& Names);
 
-	UFUNCTION(BlueprintCallable, Category = "DeepLibary|Tensorflow")
+	UFUNCTION(BlueprintCallable, Category = "DeepLibrary|Tensorflow")
 	static bool Read(FTensorflowSession& Session, ETensorflowDataType Type);
 
-	UFUNCTION(BlueprintCallable, Category = "DeepLibary|Tensorflow")
+	UFUNCTION(BlueprintCallable, Category = "DeepLibrary|Tensorflow")
 	static bool Write(FTensorflowSession& Session, ETensorflowDataType Type);
 
 public:
 
-	UFUNCTION(BlueprintCallable, Category = "DeepLibary|CNTK")
+	UFUNCTION(BlueprintCallable, Category = "DeepLibrary|CNTK")
 	static bool TestCNTK();
 
-	UFUNCTION(BlueprintCallable, Category = "DeepLibary|Tensorflow")
+	UFUNCTION(BlueprintCallable, Category = "DeepLibrary|Tensorflow")
 	static bool TestTensorflow();
 
 private:
