@@ -1,12 +1,67 @@
-Microsoft CNTK (https://docs.microsoft.com/en-us/cognitive-toolkit)
-This archive contains binary version of CNTK for 64bit Linux systems
-This archive binary version is designed for systems with NVIDIA GPU
-This archive does not contain support of
-1-bit Stochastic Gradient Descent for the Computational Network Toolkit (1bit-SGD)
-(more on 1bit-SGD here: https://docs.microsoft.com/en-us/cognitive-toolkit/Enabling-1bit-SGD)
+## DeepLearningFramework in UE4
 
-To obtain other binary versions of CNTK visit https://github.com/Microsoft/CNTK/releases
------------------------------
-Installation.
+### Warning
+> Read 'LICENSE.md'
 
-See instructions online at https://docs.microsoft.com/en-us/cognitive-toolkit
+Supprot DeepLearningFrameworks
+* CNTK 2.5.1
+* Tensorflow R1.7
+
+### Sample
+
+CNTK
+```
+auto func = UDeepFunctionLibrary::GetCNTKFunction(ECNTKDeviceType::GPU, "C:\\something.pretrained");
+auto map = UDeepFunctionLibrary::GetEmptyEvaluateMap();
+TArray<float> input = { 0., 0., 1., 0., 0., 1., 1., 1. };
+
+UDeepFunctionLibrary::LoadEmptyEvaluateMap(map, ECNTKDeviceType::CPU, func, "", input);
+
+auto output = UDeepFunctionLibrary::RunCNTK(func, map);
+```
+
+Tensorflow
+```
+FString GraphDef = "C:\\something.pb";
+
+FTensorflowSession session = UDeepFunctionLibrary::CreateSession(GraphDef);
+if(!session.Handle.IsValid())
+{
+	return false;
+}
+ 
+UDeepFunctionLibrary::PushInput(session, FString(TEXT("a")), ETensorflowDataType::DT_FLOAT, { 1 });
+UDeepFunctionLibrary::PushInput(session, FString(TEXT("b")), ETensorflowDataType::DT_FLOAT, { 1 });
+UDeepFunctionLibrary::LoadInput(session, FString(TEXT("a")));
+
+session.FlatFloat.Reset();
+session.FlatFloat.Add(3.0f);
+if (!UDeepFunctionLibrary::Write(session, ETensorflowDataType::DT_FLOAT))
+{
+	return false;
+}
+
+UDeepFunctionLibrary::LoadInput(session, FString(TEXT("b")));
+session.FlatFloat.Reset();
+session.FlatFloat.Add(2.0f);
+if (!UDeepFunctionLibrary::Write(session, ETensorflowDataType::DT_FLOAT))
+{
+	return false;
+}
+
+UDeepFunctionLibrary::RunTS(session, { FString(TEXT("c")) });
+if (UDeepFunctionLibrary::GetStatus(session) != "OK")
+{
+	return false;
+}
+
+UDeepFunctionLibrary::LoadOutput(session, FString(TEXT("c")));
+if (!UDeepFunctionLibrary::Read(session, ETensorflowDataType::DT_FLOAT))
+{
+	return false;
+}
+
+auto output = session.FlatFloat;
+
+return true;
+```
