@@ -13,9 +13,9 @@ IMPLEMENT_MODULE(FTensorflowBridgePlugin, Tensorflow)
 
 void FTensorflowBridgePlugin::StartupModule()
 {
-	const FString TensorflowPath = FPaths::ProjectPluginsDir() / TEXT("Runtime/DeepLibrary/ThirdParty/Tensorflow/lib");
+	const FString TensorflowPath = FPaths::ProjectPluginsDir() / TEXT("DeepLibrary/ThirdParty/Tensorflow/lib/");
 	FPlatformProcess::PushDllDirectory(*TensorflowPath);
-	DLLHandle = FPlatformProcess::GetDllHandle(*(TensorflowPath + "dl_adaptor_g.dll"));
+	DLLHandle = FPlatformProcess::GetDllHandle(*(TensorflowPath + "dl_adaptor.dll"));
 	FPlatformProcess::PopDllDirectory(*TensorflowPath);
 }
 

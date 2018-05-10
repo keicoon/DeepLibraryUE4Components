@@ -17,13 +17,13 @@
   "Modules": [
     {
       "Name": "CNTKCore",
-      "Type": "Editor",
-      "LoadingPhase": "Default"
+      "Type": "Runtime",
+      "LoadingPhase": "PreDefault"
     },
 		{
       "Name": "TensorflowBridge",
-      "Type": "Editor",
-      "LoadingPhase": "Default"
+      "Type": "Runtime",
+      "LoadingPhase": "PreDefault"
     }
   ]
 }

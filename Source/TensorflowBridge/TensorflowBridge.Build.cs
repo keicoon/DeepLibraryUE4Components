@@ -30,10 +30,10 @@ namespace UnrealBuildTool.Rules
             if (Target.Platform == UnrealTargetPlatform.Win64)
             {
                 PublicLibraryPaths.Add(LibDir);
-                PublicAdditionalLibraries.Add("dl_adaptor_g.lib");
-                PublicDelayLoadDLLs.Add("dl_adaptor_g.dll");
+                PublicAdditionalLibraries.Add("dl_adaptor.lib");
+                PublicDelayLoadDLLs.Add("dl_adaptor.dll");
 
-                RuntimeDependencies.Add(new RuntimeDependency(Path.Combine(LibDir, "dl_adaptor_g.dll")));
+                RuntimeDependencies.Add(Path.Combine(LibDir, "dl_adaptor.dll"));
             }
         }
 	}

@@ -5,12 +5,7 @@ using System;
 namespace UnrealBuildTool.Rules
 {
 	public class DeepLibrary : ModuleRules
-	{
-        protected string ThirdPartyPath
-        {
-            get { return Path.GetFullPath(Path.Combine(ModuleDirectory, "..", "..", "ThirdParty")); }
-        }
-        
+	{   
         public DeepLibrary(ReadOnlyTargetRules Target) : base (Target)
         {
             PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
@@ -24,7 +19,7 @@ namespace UnrealBuildTool.Rules
                 "Engine",
                 "CNTKCore",
                 "TensorflowBridge"
-			});
+            });
         }
 	}
 }

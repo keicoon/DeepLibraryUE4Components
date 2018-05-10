@@ -1,7 +1,7 @@
 #include "DeepLibraryPlugin.h"
 
 #include "CNTKLibrary.h"
-#include "dl-tensorflow.h" 
+#include "dl-tensorflow.h"
 
 #include "DeepFunctionLibrary.h"
 
@@ -19,8 +19,6 @@ void FDeepLibrary::StartupModule()
 void FDeepLibrary::ShutdownModule()
 {
 }
-
-IMPLEMENT_MODULE(FDeepLibrary, DeepLibrary)
 
 namespace CNTKHelper
 {
@@ -403,3 +401,5 @@ bool UDeepFunctionLibrary::TestTensorflow()
 	// output = [6.0]
 	return true;
 }
+
+IMPLEMENT_MODULE(FDeepLibrary, DeepLibrary)

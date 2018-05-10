@@ -35,8 +35,8 @@ namespace UnrealBuildTool.Rules
                 PublicLibraryPaths.Add(LibDir);
                 PublicAdditionalLibraries.Add("Cntk.Core-2.5.1.lib");
 
-                RuntimeDependencies.Add(new RuntimeDependency(Path.Combine(LibDir, "Cntk.Core-2.5.1.dll")));
-                RuntimeDependencies.Add(new RuntimeDependency(Path.Combine(LibDir, "Cntk.Math-2.5.1.dll")));
+                RuntimeDependencies.Add(Path.Combine(LibDir, "Cntk.Core-2.5.1.dll"));
+                RuntimeDependencies.Add(Path.Combine(LibDir, "Cntk.Math-2.5.1.dll"));
             }
         }
     }

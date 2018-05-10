@@ -15,7 +15,7 @@ void FCNTKCore::StartupModule()
 {
 	TArray<FString> DependencyDLLNames = {
 		"libiomp5md.dll",
-		"mkl_cntk_p.dll",
+		"mklml.dll",
 		// GPU depedency dll
 		"cublas64_90.dll",
 		"cudart64_90.dll",
@@ -24,7 +24,7 @@ void FCNTKCore::StartupModule()
 		"cusparse64_90.dll",
 		"nvml.dll"
 	};
-	const FString CNTKPath = FPaths::ProjectDir() / TEXT("Plugins/Runtime/CNTK/ThirdParty/lib/");
+	const FString CNTKPath = FPaths::ProjectPluginsDir() / TEXT("DeepLibrary/ThirdParty/CNTK/lib/");
 	FPlatformProcess::PushDllDirectory(*CNTKPath);
 	for (auto path : DependencyDLLNames)
 	{
