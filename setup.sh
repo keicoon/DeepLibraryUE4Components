@@ -12,5 +12,5 @@ else
         (cd ThirdParty; curl -O -L https://github.com/keicoon/DeepLibraryUE4Components/releases/download/$Version/libs.zip)
     fi
 
-    (cd ThirdParty; unzip $ZipFile;)
+    (cd ThirdParty; unzip libs.zip;)
 fi
