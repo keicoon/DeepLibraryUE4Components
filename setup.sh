@@ -5,7 +5,7 @@ Version=1.0.0
 if [ -d "ThirdParty/CNTK/lib" ]; then
     echo "ThirParty libraries is ready to downloaded"
 else
-    if [ -f "ThirdParty/$ZipFile" ]; then
+    if [ -f "ThirdParty/libs.zip" ]; then
         echo "Okay you have zip"
     else
         echo "Download prebuilt ThirdParty libraries for DeepLibrary"
